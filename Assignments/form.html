@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <fieldset style = "width: 0px;">
+            <legend>Best Band</legend>
+            <label for = "txtBandName">Band Name:</label> 
+            <input type="text" id = "txtBandName" required title = "What is the band name?">
+            <br><br>
+            <label for = "txrtNumberOne"> Number One Hits:</label>
+            <input type = "text" id = "txtNumberOne" required title="How many #1 hits?">
+            <br><br>
+            <label for = "txtLeadSinger">Lead Singer:</label>
+            <input type = "text" id = "txtLeadSinger" required title = "Who is the lead singer?">
+            <br><br>
+            <label for = "txtBestSong">Best Song:</label>
+            <input type = "text" id = "txtBestSong" required title = "what is the band's best song?">
+            <br><br>
+            <label for = "txtThoughts">Your Thoughts</label>
+            <textarea id = "txtThoughts" rows = "3" cols = "40" maxlength = "200" required title = "enter your opinion of the band"></textarea>
+            <br><br>
+        </fieldset>
+        <br><br>
+        <button type = "button" onclick = "submitData();">Submit</button>
+        <br><br>
+        <fieldset style = "width: 500px;">
+            <legend>Output</legend>
+                <p id = "myOutput"></p>
+        </fieldset>
+
+        <script>
+            function submitData(){
+                let sOutput = "";
+
+                sOutput = sOutput + document.getElementById("txtBandName").value + "<br>" +
+                                    document.getElementById("txtNumberOne").value + "<br>" +
+                                    document.getElementById("txtLeadSinger").value + "<br>" +
+                                    document.getElementById("txtBestSong").value + "<br>" +
+                                    document.getElementById("txtThoughts").value;
+                document.getElementById("myOutput").innerHTML = sOutput;
+                //put in input id, get the value. innerhtml only works for things w/ opening and closing tags. inputs are accessed by value
+            }
+        </script>
+    </form>
+</body>
+</html>

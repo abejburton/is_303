@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action ="/editTable" method="post">
+        <fieldset style="width: 0px;">
+            <legend>Edit a Drink:</legend>
+            <input type="hidden" id="drink_id" name = "drink_id" value = "<%=drinks[0].drink_id %>">
+            <label for="drink_name">drink_name:</label>
+            <input type="text" id="drink_name" name = "drink_name" value = "<%=drinks[0].drink_name %>">
+            <br><br>
+            <label for="drink_ingredients">drink_ingredients:</label>
+            <input type="text" id="drink_ingredients" name = "drink_ingredients" value = "<%=drinks[0].drink_ingredients %>">
+            <br><br>
+            <label for="drink_price">drink_price:</label>
+            <input type="text" id="drink_price" name = "drink_price" value = "<%=drinks[0].drink_price %>">
+            <br><br>
+            <label for="drink_ranking">drink_ranking:</label>
+            <input type="number" id="drink_ranking" name = "drink_ranking" value = "<%=drinks[0].drink_ranking %>">
+            <br><br>
+            <label for="drink_sweetness">drink_sweetness:</label>
+            <input type="text" id="drink_sweetness" name = "drink_sweetness" value = "<%=drinks[0].drink_sweetness %>">
+            <br><br>
+            <label for="tasted">State:</label>
+            <input type="text" id="tasted" name = "tasted" value = "<%=drinks[0].tasted %>">
+            <br><br>
+        </fieldset>
+        <button type="submit">Save</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/editCountry" method="POST">
+        <fieldset style="width: 0px;">
+            <legend>Edit a Country</legend>
+            <input type="hidden" id="country" name="country_id" value = "<%= mycountry[0].country_id%>">
+            <label for="country_name">Country Name</label>
+            <input type="text" id="country_name" name="country_name" value="<%= mycountry[0].country_name%>">
+            <label for="popular_site">Popular Site</label>
+            <input type="text" id="popular_site" name="popular_site" value="<%= mycountry[0].popular_site%>">
+            <label for="capital">Capital</label>
+            <input type="text" id="capital" name="capital" value="<%= mycountry[0].capital%>">
+            <label for="population">Capital</label>
+            <input type="number" id="population" name="population" value="<%= mycountry[0].population%>">
+            <label for="visited">Visited (Y/N)</label>
+            <input type="checkbox" id="visited" name="visited" <%= mycountry[0].visited =="Y" ? "checked" : "" %> >
+            <fieldset style="width: 100px;">
+                <legend>Covid Level</legend>
+                <input type="radio" id="covid_high" name="covid_level" value="H" <%= mycountry[0].covid_level =="H" ? "checked" : "" %> >
+                <label for = "covid_high">High</label>
+                <input type="radio" id="covid_medium" name="covid_level" value="M" <%= mycountry[0].covid_level =="M" ? "checked" : "" %> >
+                <label for = "covid_medium">Medium</label>
+                <input type="radio" id="covid_low" name="covid_level" value="L" <%= mycountry[0].covid_level =="L" ? "checked" : "" %> >
+                <label for = "covid_low">Low</label>
+            </fieldset>
+        </fieldset>
+        <button type="submit">Save</button>
+    </form>
+</body>
+</html>

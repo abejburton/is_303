@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="/css/styles.css" rel="stylesheet" />
+    <link href="/css/tablestyles.css" rel="stylesheet" />
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+        <div class="container px-4 px-lg-5">
+
+            <a class="navbar-brand" href="/">Fight Human Trafficking</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                Menu
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="learn">Learn</a></li>
+                    <li class="nav-item"><a class="nav-link" href="understand">Understand</a></li>
+                    <li class="nav-item"><a class="nav-link" href="act">Act</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <br><br>
+    <table style="width: 100%; background-color: rgb(255, 255, 255); border: 1px solid black;">
+        <thead style="background-color: rgb(0, 0, 0); color: white;">
+            <tr>
+                <th style="text-align: left;">Date Missing</th>
+                <th style="text-align: left;">Last Name</th>
+                <th style="text-align: left;">First Name</th>
+                <th style="text-align: left;">Age at Missing</th>
+                <th style="text-align: left;">City</th>
+                <th style="text-align: left;">State</th>
+                <th style="text-align: left;">Gender</th>
+                <th style="text-align: left;">Race</th>
+            </tr>
+        </thead>
+        <tbody style="font-family: Arial, Helvetica, sans-serif; font-size: 9pt;">
+            <% for (let iCount = 0; iCount < victims.length; iCount ++) { %>
+               <tr>
+                   <td><%=victims[iCount].date_missing %></td>
+                   <td><%=victims[iCount].last_name %></td>
+                   <td><%=victims[iCount].first_name %></td>
+                   <td><%=victims[iCount].age_at_missing %></td>
+                   <td><%=victims[iCount].city %></td>
+                   <td><%=victims[iCount].state %></td>
+                   <td><%=victims[iCount].gender %></td>
+                   <td><%=victims[iCount].race %></td>
+                   <td></td>
+                   <td>
+                       <form action="/editTable/<%= victims[iCount].victim_id %>" method="GET">
+                        <button class = btn type="submit" style="background-color:black; color: white; padding: 1.5em">Edit</button>
+                       </form>
+                   </td>
+                   <td>
+                    <form action="/deleteVictim/<%= victims[iCount].victim_id %>" method="POST">
+                     <button class = btn type="submit"  style="background-color:black; color: white; padding: 1.5em">Delete</button>
+                    </form>
+                </td>
+               </tr> 
+            <% } %>
+        </tbody>
+        <br><br>
+        <!-- <form action="/addVictim" method = "GET"> -->
+            <!-- <button type="submit">Add</button> -->
+        <!-- </form> -->
+    </table>
+    <form action="/addVictim" method = "GET" style="text-align: center;">
+        <br>
+        <button class = btn type="submit"  style="background-color:black; color: white; padding: 1.5em">Add Record</button>
+        <br>
+    </form>
+</body>
+</html>

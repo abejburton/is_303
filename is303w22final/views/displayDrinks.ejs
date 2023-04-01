@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <br><br>
+    <table style="width: 100%; background-color: rgb(255, 255, 255); border: 1px solid black;">
+        <thead style="background-color: rgb(0, 0, 0); color: white;">
+            <tr>
+                <th style="text-align: left;">drink_name</th>
+                <th style="text-align: left;">drink_ingredients</th>
+                <th style="text-align: left;">drink_price</th>
+                <th style="text-align: left;">drink_rating</th>
+                <th style="text-align: left;">drink_sweetness</th>
+                <th style="text-align: left;">tasted</th>
+            </tr>
+        </thead>
+        <tbody style="font-family: Arial, Helvetica, sans-serif; font-size: 9pt;">
+            <% for (let iCount = 0; iCount < drinks.length; iCount ++) { %>
+               <tr>
+                   <td><%=drinks[iCount].drink_name %></td>
+                   <td><%=drinks[iCount].drink_ingredients %></td>
+                   <td><%=drinks[iCount].drink_price %></td>
+                   <td><%=drinks[iCount].drink_rating %></td>
+                   <td><%=drinks[iCount].drink_sweetness %></td>
+                   <td><%=drinks[iCount].tasted %></td>
+                   <td></td>
+                   <td>
+                       <form action="/editDrink/<%= drinks[iCount].drink_id %>" method="GET">
+                            <button type="submit" style="background-color:black; color: white; padding: 1.5em">Edit</button>
+                       </form>
+                   </td>
+                   <td>
+                        <form action="/deleteDrink/<%= drinks[iCount].drink_id %>" method="POST">
+                            <button type="submit"  style="background-color:black; color: white; padding: 1.5em">Delete</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form action="/returnHome" method="POST">
+                            <button type="submit"  style="background-color:black; color: white; padding: 1.5em">Return Home</button>
+                        </form>
+                    </td>
+               </tr> 
+            <% } %>
+        </tbody>
+    
+</body>
+</html>

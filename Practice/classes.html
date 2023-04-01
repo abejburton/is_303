@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <fieldset style="width: 0px;" id="customer">
+            <legend>Rental:</legend>
+            <label for="customer_name">Customer Name:</label>
+            <input type="text" id="customer_name">
+            <br><br>
+            <label for="customer_id">Customer ID:</label>
+            <input type="text" id="customer_ID">
+            <button type="button" onclick="store_customer()">Add Instrument</button>
+            <br><br>
+        </fieldset>
+        <fieldset style="width: 0px;" id="instrument" disabled>
+            <legend>Instruments:</legend>
+            <select id="list_instrument">
+                <option value="Alto Sax">Alto Sax</option>
+                <option value="Clarinet">Clarinet</option>
+                <option value="Flute">Flute</option>
+                <option value="Trombone">Trombone</option>
+                <option value="Trumpet">Trumpet</option>
+                <option value="Tuba">Tuba</option>
+            </select>
+            <br><br>
+            <label for="instrument_quantity">Quantity</label>
+            <input type="number" id="instrument_quantity" min="1" value="1">
+            <br><br>
+            <button type="button" onclick="store_data()">Add Instrument</button>
+        </fieldset>
+    </form>
+    <p id="output"></p>
+    <button type="button" id="btndisplay" onclick="display_data()">Display</button>
+    <script>
+        class person{
+            constructor(name){
+
+                this.name = name; //declares attribute
+            }
+        }
+
+        class customer extends person{
+
+            constructor(name,id){
+
+                super(name); //comes from the extended class. super used for inheritance
+                this.id = id;
+                this.instruments = []; //array for inputting instrument objects
+                this.total_cost = 0;
+            }
+        }
+
+        class instrument{
+            constructor(description,price,quantity){
+                
+                this.description = description;
+                this.price = price;
+                this.quantity = quantity;
+            }
+        }
+        
+        let customer_instance;
+
+        function store_customer(){
+
+            let customer_name = document.getElementById("customer_name").value;
+            let customer_id = document.getElementById("customer_ID").value;
+
+            customer_instance = new customer(customer_name,customer_id);
+
+            document.getElementById("customer").disabled = true; //disables the fieldset for customer
+            document.getElementById("instrument").disabled = false; //enables the fieldset for instrument
+
+        }
+
+        function store_data(){
+
+            let instrument_input = document.getElementById("list_instrument").value;
+            let quantity = parseInt(document.getElementById("instrument_quantity").value);
+            let total_price;
+            let instrument_price;
+
+            if(instrument_input =="Alto Sax"){
+                instrument_price = 23;
+            }
+            else if(instrument_input == "Clarinet"){
+                instrument_price = 25;
+            }
+            else if(instrument_input == "Flute"){
+                instrument_price = 23;
+            }
+            else if(instrument_input == "Clarinet"){
+                instrument_price = 23;
+            }
+            else if(instrument_input == "Trombone"){
+                instrument_price = 35;
+            }
+            else if(instrument_input == "Trumpet"){
+                instrument_price = 30;
+            }
+            else if(instrument_input == "Tuba"){
+                instrument_price = 42;
+            }
+            else{
+                instrument_price = 0;
+            }
+
+            total_price = instrument_price*quantity;
+            customer_instance.instruments.push(new instrument(instrument_input,instrument_price,quantity)); //push instrument info to customer object
+            customer_instance.total_cost += total_price;
+
+
+        }
+
+        function display_data(){
+            let output = "";
+
+            output = "Customer: " + customer_instance.name + "<br>ID: " + customer_instance.id + "<br>Total: $" + customer_instance.total_cost + "<br><br>";
+
+            for (let count = 0; count<customer_instance.instruments.length; count++){
+                output += customer_instance.instruments[count].description + " - " + customer_instance.instruments[count].quantity + "<br>";
+            
+            }
+
+            document.getElementById("instrument").disabled = true;
+            document.getElementById("customer").disabled = false;
+            document.getElementById("output").innerHTML = output;
+        }
+        
+
+    </script>
+</body>
+</html>

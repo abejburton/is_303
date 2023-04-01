@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="GroupProject.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap" rel="stylesheet">
+    <script>
+
+        //this function rounds and can be called in calculating gpa
+        function round(value, decimals) 
+        {
+            return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
+        }
+        //declare gpa variable
+        var gpa_weighted = 0;
+        
+        //calculate gpa based on user input
+        function calcGPA()
+        {
+            //declare variables accessing the user input
+            let aGPALetter = ["A","A-","B+","B","B-","C+","C","C-","D+","D","D-","E"];
+            let aGPAGrade = [4.0,3.7,3.4,3.0,2.7,2.4,2.0,1.7,1.4,1.0,0.7,0.0,0];
+
+            let grade_201 =parseFloat(document.getElementById("201Dropdown").value);
+            let grade_303 =parseFloat(document.getElementById("303Dropdown").value);
+            let grade_a200 =parseFloat(document.getElementById("ACC200Dropdown").value);
+            let check_201 =document.getElementById("201Checkbox");
+            let check_303 =document.getElementById("303Checkbox");
+            let check_a200 =document.getElementById("ACC200Checkbox");
+            let gpa_30 =document.getElementById("30GPA").value;
+            let gpa_overall =document.getElementById("OverallGPA").value;
+            let final_gpa;
+            // executes only if all the inputs are filled in
+            if((isNaN(grade_201)) || isNaN(grade_303) || isNaN(grade_a200) || (gpa_30 == "") || (gpa_overall == ""))
+            {
+                alert("Please enter all scores.");
+                document.getElementById("201Dropdown").focus();
+            }
+            else
+            {
+                // determines the number to calculate with based on the grade
+                if(check_201.checked)
+                {
+                    let index = aGPAGrade.indexOf(grade_201);
+                    grade_201 = aGPAGrade[index+1];
+                }
+                if(check_303.checked)
+                {
+                    let index = aGPAGrade.indexOf(grade_303);
+                    grade_303 = aGPAGrade[index+1];
+                }
+                if(check_a200.checked)
+                {
+                    let index = aGPAGrade.indexOf(grade_a200);
+                    grade_a200 = aGPAGrade[index+1];
+                }
+                // grade calculations
+                gpa_weighted = grade_201*.3 + grade_303*.3 + grade_a200*.05 + gpa_overall*.15 + gpa_30*.2;
+                final_gpa = round(gpa_weighted, 2);
+                return final_gpa
+            }
+            
+        }
+        //creates and displays the correctly colored circle 
+        function myCircle(final_gpa)
+        {
+            document.getElementById("myCircle1").innerHTML = '<svg height="100" width="100"><circle id="myCircle" cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="green" display = "none"/></svg>';
+            document.getElementById("finalGPA").innerHTML = "Weighted GPA =  " + final_gpa;
+            document.getElementById("finalGPA").scrollIntoView();
+                
+            if (final_gpa >= 3.7)
+            {
+                document.getElementById("myCircle").style.display = "block";                                         
+                document.getElementById("myCircle").style.fill="green";
+            }
+            else if ((final_gpa >= 3.4) && (final_gpa < 3.7))
+            {
+                document.getElementById("myCircle").style.display = "block";                                         
+                document.getElementById("myCircle").style.fill="yellow";
+            }
+            else if (final_gpa <3.4)
+            {
+                document.getElementById("myCircle").style.display = "block";                                         
+                document.getElementById("myCircle").style.fill="red";
+            }   
+        }
+
+        // clears the circle and all inputs
+        function clearCircle()
+        {
+            document.getElementById("myCircle1").innerHTML = "";
+            document.getElementById("finalGPA").innerHTML = "";
+            document.getElementById("201Dropdown").focus();
+            document.getElementById("201Dropdown").value = 4.0;
+            document.getElementById("303Dropdown").value = 4.0;
+            document.getElementById("ACC200Dropdown").value = 4.0;
+            document.getElementById("201Checkbox").checked = false;
+            document.getElementById("303Checkbox").checked = false;
+            document.getElementById("ACC200Checkbox").checked = false;
+            document.getElementById("OverallGPA").value = "";
+            document.getElementById("30GPA").value = "";
+        }
+        // focuses on the 201 dropdown upon loading the page
+        function onloadFocus()
+        {
+            document.getElementById("201Dropdown").focus();
+        }
+        // this function occurs when the calculate button is pressed
+        function buttonFunction()
+        {
+            // receives a value from calcGPA function
+            returnvalue = calcGPA();
+            // only executes myCircle if there is a value stored in returnvalue
+            if(typeof returnvalue !== "undefined")
+            {
+            myCircle(returnvalue);
+            }
+            else
+            {
+                document.getElementById("201Dropdown").focus();
+            }
+        }
+    </script>
+</head>
+<body onload="onloadFocus()">
+    <div class="header" style="font-size: large;">
+        <a href="https://marriott.byu.edu/infosys/" style="float: left;">
+        <img src="msb_logo.svg" style="height: 37px;" alt="MarriottSchool" >
+        </a>
+        <br>
+        <h1 style="font-weight:bold;">IS Calculator</h1>
+    </div>
+    <div style="margin: 0 50px;"> 
+    <h3 class="centertext">Program Overview</h3>
+    <!-- IS information -->
+    <p>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The BS Information Systems program is available as a four-year traditional degree
+        or as a five-year integrated option where students earn both the BS IS and MISM degrees. 
+        The BS IS program is a 64-credit degree including pre-management, junior core, management core, and a capstone.
+    </p>
+    <h3 class="centertext">Curriculum</h3>
+    <p>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Information systems students learn to define, develop, and maintain the information system infrastructure that supports the operations 
+        of all businesses, governments, and other institutions. The BS Information Systems degree develops the ability to function
+        effectively as a professional, applying state-of-the-art technology in solving business problems. 
+        Students are trained in business and information systems and taught to understand complex business environments.
+        <br><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Built on a solid foundation of business courses, the curriculum advances students’ understanding of technologies in the design
+         and development of information systems. They gain technical expertise in systems analysis; systems design and implementation; 
+         database development and management; programming; telecommunications networking; 2-tier, 3-tier, and n-tier application development;
+          and web application development.
+    </p>
+    </div>  
+    <form style="margin: 25px 50px;">
+        <br>
+        <h3>Admission GPA Calculator</h3>
+        <!-- Selector for IS 201 Grade -->
+        <label for="201Dropdown">IS 201</label>
+        <select id="201Dropdown" class="dropdowns">
+            <option value=4.0>A</option>
+            <option value=3.7>A-</option>
+            <option value=3.4>B+</option>
+            <option value=3.0>B</option>
+            <option value=2.7>B-</option>
+            <option value=2.4>C+</option>
+            <option value=2.0>C</option>
+            <option value=1.7>C-</option>
+            <option value=1.4>D+</option>
+            <option value=1.0>D</option>
+            <option value=0.7>D-</option>
+            <option value=0.0>E</option>
+        </select>
+        <!-- Checkbox for IS 201 Grade  -->
+        <input type="checkbox" id="201Checkbox">
+        <label for="201Checkbox">Retake</label>
+        <br><br>
+        <!-- 303 Dropdown -->
+        <label for="303Dropdown">IS 303/CS 142</label>
+        <select id="303Dropdown" class="dropdowns">
+            <option value=4.0>A</option>
+            <option value=3.7>A-</option>
+            <option value=3.4>B+</option>
+            <option value=3.0>B</option>
+            <option value=2.7>B-</option>
+            <option value=2.4>C+</option>
+            <option value=2.0>C</option>
+            <option value=1.7>C-</option>
+            <option value=1.4>D+</option>
+            <option value=1.0>D</option>
+            <option value=0.7>D-</option>
+            <option value=0.0>E</option>
+        </select>
+        <!-- 303 Checkbox -->
+        <input type="checkbox" id="303Checkbox">
+        <label for="303Checkbox">Retake</label>
+        <br><br>
+        <!-- ACC200 Dropdown -->
+        <label for="ACC200Dropdown">ACC 200</label>
+        <select id="ACC200Dropdown" class="dropdowns">
+            <option value=4.0>A</option>
+            <option value=3.7>A-</option>
+            <option value=3.4>B+</option>
+            <option value=3.0>B</option>
+            <option value=2.7>B-</option>
+            <option value=2.4>C+</option>
+            <option value=2.0>C</option>
+            <option value=1.7>C-</option>
+            <option value=1.4>D+</option>
+            <option value=1.0>D</option>
+            <option value=0.7>D-</option>
+            <option value=0.0>E</option>
+        </select>
+        <!-- ACC200 Checkbox -->
+        <input type="checkbox" id="ACC200Checkbox">
+        <label for="ACC200Checkbox">Retake</label>
+        <br><br>
+        <!-- Overall GPA text input box -->
+        <label for="OverallGPA">BYU Overall GPA:</label>
+        <input type="text" id="OverallGPA" class="inputs" placeholder="GPA">
+        <br><br>
+        <!-- Last 30 Credits Gpa input box -->
+        <label for="30GPA">BYU Last 30 Credits GPA:</label>
+        <input type="text" id="30GPA" class="inputs" placeholder="GPA"><br><br>
+        <!-- calculate button -->
+        <button type="button" onclick="buttonFunction();">CALCULATE</button><br><br>
+        <!-- reset button -->
+        <button type="button" onclick="clearCircle()">RESET</button>
+    </form>
+        <div id = "myCircle1" style="margin-left: 60px;"></div>
+        <div id="finalGPA" style="margin-left: 30px; margin-bottom: 20px; font-weight: 900;"></div>
+</body>
+</html>

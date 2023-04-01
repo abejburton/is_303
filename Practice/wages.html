@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="wages.js"></script>
+</head>
+<body>
+    <script>
+        
+        let name = prompt("Enter the employee's name.");
+        let hours = parseFloat(prompt("Enter the total number of hours worked."));
+        let wage = parseFloat(prompt("Enter the hourly wage."));
+        let tax = parseFloat(prompt("Enter the tax rate."));
+        let fica = parseFloat(prompt("Enter the FICA rate."));
+
+        pay = calcpay(hours,wage,tax,fica);
+
+        let message = name + " worked " + hours + " hours in the week at " + wage + " per hour and took home " + "$" + pay + ".";
+        alert(message);
+
+
+
+    </script>
+    
+</body>
+</html>

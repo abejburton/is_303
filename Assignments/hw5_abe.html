@@ -1,0 +1,74 @@
+<!--
+    Abe Burton
+    Is 303 HW5
+
+    Create arrays holding team names and wins. Return the best team and their win total
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soccer Season</title>
+</head>
+<body>
+    <script>
+
+        //Get user input and create arrays to track names and wins for each team
+        let teams = parseInt(prompt("Enter the number of teams to work with. eg: '8'"));
+        let names = [];
+        let wins = [];
+
+        //If the number of games is valid generate wins and team names, if not, show error
+        if (Number.isInteger(teams)==true){
+
+        
+            for (let counter = 0; counter < teams; counter++){
+
+                let name = prompt("Enter team " + (counter + 1) + "'s name.");
+                names.push(name);
+
+                let win = Math.floor(Math.random() * 26);
+                wins.push(win);
+            }
+
+            //Declare variables for finding the best team and their record
+            let max_wins = 0;
+            let best_team = "";
+            let min_losses = 0;
+
+            //loop through win totals to find the max, leaving the first instance in case of a tie
+            for (let counter2 = 0;counter2 < teams; counter2++){
+
+                if (wins[counter2] > max_wins){
+                    max_wins = wins[counter2];
+                    best_team = names[counter2];
+
+                }
+            }
+
+        
+            //Update losses based on wins and total games, then output the best team info
+            min_losses = 25-max_wins;
+            let output_max = best_team + " had the most wins with a record of " + max_wins + "-" + min_losses;
+            alert(output_max);
+
+            //Create output for all teams by looping through each team and concatenating their info
+            let total_output = "";
+            for (let counter3 = 0; counter3 < teams; counter3++){
+                total_output = total_output + " " + names[counter3] + " " + wins[counter3] + "-" + (25-wins[counter3]) + "\n";
+            }
+
+            //Output to user the final records
+            alert(total_output);
+        }
+        else {
+            alert("No teams to display: invalid number of teams.")
+        }
+
+
+    </script>
+</body>
+</html>

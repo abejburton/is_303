@@ -1,0 +1,51 @@
+<!--
+    Abe Burton
+    Section 004
+    HW3 - Decide the outcome of a BYU Gonzaga game, output the outcome
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+        //Declare variables
+        var myScore;
+        var opponentScore;
+        var output;
+        var output_byu;
+        var output_gonzaga;
+        var output_tie;
+
+        //Create random numbers and assign variable values
+        myScore = Math.floor(Math.random() * 101);
+        opponentScore = Math.floor(Math.random() * 101);
+        output = "BYU "+myScore+"\n"+"Gonzaga "+opponentScore+"\n\n";
+        output_byu = output + "BYU wins";
+        output_gonzaga = output + "Gonzaga wins";
+        output_tie  = output + "Tie game";
+
+
+        //Determine who wins and output results
+        if(myScore>opponentScore){
+            alert(output_byu);
+
+        }
+        else if(myScore<opponentScore){
+            alert(output_gonzaga);
+        }
+        else{
+            alert(output_tie);
+        }
+    </script>
+    
+</body>
+</html>

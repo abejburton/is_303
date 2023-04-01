@@ -1,0 +1,74 @@
+<!--
+    Abe Burton
+    Section 004 IS 303
+    HW4 
+
+    Track win/loss record for a team and return a team's end of season result
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Season Ratings</title>
+</head>
+<body>
+    <script>
+ 
+   
+       //Declare variables and get user input
+       let team = prompt("Enter your team name:\neg: 'Utah Jazz'");
+       let games = parseInt(prompt("Enter the number of games in a season:\neg: '8'"));
+       let wins = 0;
+       let losses = 0;
+       let ties = 0;
+       let record;
+       let tournament;
+       let output;
+        
+       //Iterate through each game. Generate scores, decide the winner, deal with ties via do-while loop
+        for (let counter = 0; counter < games; counter++){
+            let opp_name = prompt("Enter your opponent's name.\neg: 'Denver Nuggets'");
+            let team_score;
+            let opp_score;
+
+            do {
+                team_score = Math.floor(Math.random() * 11);
+                opp_score = Math.floor(Math.random() * 11);
+                   
+                if (team_score > opp_score){
+                    wins+=1;
+                }
+                else if (team_score < opp_score){
+                    losses+=1;
+                }
+            }
+            while (team_score == opp_score);
+
+       }
+
+        //update the record (winning percentage) with the results of the for loop
+        record = wins/games;
+
+        //Decide end of season tournament outcome based on record
+        if (record >= .75){
+            tournament = "NCAA Women's Soccer Tournament";
+        }
+        else if (record >= .5){
+            tournament = "Alternate Candidate for COVID";
+        }
+        else {
+            tournament = "See you next year";
+        }
+
+        //concatenate the elements of the output
+        output = team + " " + wins + "-" + losses + "\n" + tournament;
+
+        //Output results for the user to see
+        alert(output);
+
+    </script>
+</body>
+</html>

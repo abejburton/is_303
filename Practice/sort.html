@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        let band = ["Beatles", "Michael Jackson","Maria Carey","Stevie Wonder", "Eagles", "Rihanna"];
+        let hits = [20, 13, 18, 9, 5, 15];
+        let hold_band = [];
+        let hold_hits = [];
+        let output = "";
+
+        for (let outer = 0; outer < hits.length - 1; outer++) {
+            for (let inner = outer + 1; inner < hits.length; inner++) {
+                if (hits[outer] < hits[inner]) {
+                    hold_band = band[inner]; //hold the greater value
+                    hold_hits = hits[inner];
+
+                    band[inner] = band[outer]; //move the lesser value too the next index
+                    hits[inner] = hits[outer];
+
+                    band[outer] = hold_band; //put greater value first
+                    hits[outer] = hold_hits;
+
+                }
+            }
+        }
+
+        //by changing the band array with the hits comparison the two arrays remain linked
+
+        output = "Band with the most number one hits: ";
+        for (let count = 0; count < hits.length; count++) {
+            output = output + "\n" + band[count] + " had " + hits[count] + " #1 hits.";
+        }
+
+        console.log(output);
+
+
+
+
+
+    </script>
+    
+</body>
+</html>

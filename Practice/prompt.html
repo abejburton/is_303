@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //declare vars
+
+
+        var fname;
+        var lname;
+        var address;
+        var city;
+        var state;
+        var birth_year;
+        var current_year = 2022;
+
+        //get info and convert dtypes
+        fname = prompt("Please enter your first name");
+        lname = prompt("Please enter your last name");
+        address = prompt("Please enter your street address");
+        city = prompt("Please enter what city you live in");
+        state = prompt("Please enter what state you live in");
+        birth_year = parseInt(prompt("Please enter your birth year"));
+
+        //return their age
+
+
+        var age = current_year-birth_year;
+        alert(fname + " " + lname + "\n" +
+        address + "\n" +
+        city + "\t" + state + "\n" +
+        "In " + current_year + " " + fname + " was " + age + " years old.");
+
+    </script>
+    
+</body>
+</html>

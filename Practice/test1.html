@@ -1,0 +1,139 @@
+<!--
+    Abe Burton
+    IS303 Test
+
+    Track orders from 9 customers through 100 orders and display their total orders.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Order Tracker</title>
+</head>
+<body onload = "initVars()">
+
+    <button type="button" onclick="startDay()">start</button>
+    <p id="myOutput"></p>
+
+    <script>
+
+        //put all the code in a function called startDay that runs when the button is clicked
+        function startDay(){
+
+
+            //create an array of the customers, and an empty array to be filled with the randomly selected customers up to 100
+            var customers = ["Jefe","El Guapo","Lucky Day","Ned Nederlander","Dusty Bottoms","Harry Flugleman","Carmen","Invisible Swordsman","Singing Bush"];
+
+            var customer_list = [];
+
+            //append to the array a randomly selected customer 100 times
+            for(let counter = 0;counter<100;counter++){
+                let random = Math.floor(Math.random()*customers.length);
+                customer_list.push(customers[random]);
+            }
+
+            //create variables that contain an array of the burgers for each customer visit, and tracks the total amount
+            var burgers = [];
+            var total_burgers = 0;
+
+            //randomly generate how many burgers each customer orders and put that in an array while tracking the total
+            function randomburgers(){
+                let num = Math.floor(Math.random()*20)+1;
+                burgers.push(num);
+                total_burgers += num
+            }
+
+
+            //call the random burgers function for each of the 100 customers
+            for(let count=0;count<100;count++){
+                randomburgers();
+            }
+
+            //loop through each order and create an individual count for each person. sum the total counts as well
+            let all_counts = [];
+            let sum = 0;
+
+            for(let count2 = 0; count2<customers.length;count2++){
+                let individualcount = 0;
+
+                for (let count3 = 0; count3<customer_list.length;count3++){
+                    if (customer_list[count3]==customers[count2]){
+                        individualcount+=(burgers[count3]);
+                    }
+                }
+
+                sum+=(individualcount);
+                all_counts.push(individualcount);
+
+            }
+
+
+            //if the counts of burgers mach up then run code that sorts and outputs the data in the correct color. if not, show an error
+            if(total_burgers!=sum){
+                document.getElementById("myOutput").innerHTML = "Inventory does not match!";
+            }
+            else{
+                //bubble sort to get the counts in the right order
+                for (let outer = 0; outer < all_counts.length - 1; outer++) {
+                    for (let inner = outer + 1; inner < all_counts.length; inner++) {
+                        if (all_counts[outer] < all_counts[inner]) {
+
+                            hold_customers = customers[inner]; //hold the greater value
+                            hold_all_counts = all_counts[inner];
+
+                            customers[inner] = customers[outer]; //move the lesser value too the next index
+                            all_counts[inner] = all_counts[outer];
+                            
+                            customers[outer] = hold_customers; //put greater value first
+                            all_counts[outer] = hold_all_counts;
+
+                        }
+                    }
+                }
+                //concatenate output in the form required
+                var output = "<u><b>Burger Orders:</b></u><br>";
+                for(let count4 = 0; count4<customers.length;count4++){
+                    output += "<br>" + customers[count4] + "-" + all_counts[count4];
+                }
+                output += "<br><br>Total Burgers = " + total_burgers;
+
+                //insert output into the html page
+                document.getElementById("myOutput").innerHTML = output;
+
+            }
+
+            //style the output in the correct collors
+
+            if(total_burgers>1100){
+                document.getElementById("myOutput").style.color = "Green";
+            }
+            else if (total_burgers>1000){
+                document.getElementById("myOutput").style.color = "Blue";
+            }
+            else if (total_burgers>900){
+                document.getElementById("myOutput").style.color = "DarkGoldenRod";
+            }
+            else{
+                document.getElementById("myOutput").style.color = "Red";
+            }
+
+
+            //after running all the code, clear out global variables
+            function initVars(){
+                customers = [];
+                customer_list = [];
+                burgers = [];
+                output = "";
+                all_counts = [];
+
+            }
+
+        }
+
+    </script>
+    
+</body>
+</html>

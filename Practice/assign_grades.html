@@ -1,0 +1,134 @@
+<!--Abe Burton-->
+<!--Grade Assignment Practice-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        //Calculate Final Grade Percentage
+
+        var name = prompt("Enter Your First Name");
+        var avg = parseFloat(prompt("Enter Your Homework Average"));
+        var midterm1 = parseInt(prompt("Enter Your Midterm 1 Score"));
+        var midterm2 = parseInt(prompt("Enter Your Midterm 2 Score"));
+        var final = parseInt(prompt("Enter Your Final Score"));
+        var project1 = parseInt(prompt("Enter Your Project 1 Score"));
+        var project2 = parseInt(prompt("Enter Your Project 2 Score"));
+        var project3 = parseInt(prompt("Enter Your Project 3 Score"));
+
+        avg *= .1;
+        midterm1 *= .2;
+        midterm2 *= .2;
+        final *= .25;
+        project1 *= .05;
+        project2 *= .075;
+        project3 *= .125;
+
+        var final_weighted = .65* final;
+
+        var final_grade = avg+midterm1+midterm2+final+project1+project2+project3;
+        var finalgrade2 = aavg+midterm1+midterm2+final+project1+project2+project3;
+        
+        name = name.toUpperCase();
+
+        //Assign Final Grade
+
+        if (final_grade >= 94) {
+            alert(name+" your final grade was an A")
+
+        }
+        else if (final_grade>=90){
+            alert(name+" your final grade was an A-")
+
+        }
+        else if (final_grade>=87){
+            alert(name+" your final grade was a B+")
+
+        }
+        else if (final_grade>=83){
+            alert(name+" your final grade was a B")
+
+        }
+        else if (final_grade>=80){
+            alert(name+" your final grade was a B-")
+
+        }
+        else if (final_grade>=77){
+            alert(name+" your final grade was a C+")
+
+        }
+        else if (final_grade>=73){
+            alert(name+" your final grade was a C")
+
+        }
+        else if (final_grade>=70){
+            alert(name+" your final grade was a C-")
+
+        }
+        else if (final_grade>=67){
+            alert(name+" your final grade was a D+")
+
+        }
+        else if (final_grade>=63){
+            alert(name+" your final grade was a D")
+
+        }
+        else if (final_grade>=60){
+            alert(name+" your final grade was a D-")
+
+        }
+        else{
+            alert(name+" you failed and got an E")
+        }
+
+        //Now do the same thing using case notation. Final Grade Weighted
+        switch (true)
+        {
+            case (finalgrade2 >= 94) && (finalgrade2 <= 101) :      
+                alert(name+" your final weighted grade was an A");
+                break;
+            case (finalgrade2 >= 90) && (finalgrade2 <= 94) :
+                alert(name+" your final weighted grade was an A-");
+                break;
+            case (finalgrade2 >= 87) && (finalgrade2 <= 90) :
+                alert(name+" your final weighted grade was an B+");
+                break;
+            case (finalgrade2 >= 83) && (finalgrade2 <= 87) :
+                alert(name+" your final weighted grade was an B");
+                break;
+            case (finalgrade2 >= 80) && (finalgrade2 <= 83) :
+                alert(name+" your final weighted grade was an B-");
+                break;
+            case (finalgrade2 >= 77) && (finalgrade2 <= 80) :
+                alert(name+" your final weighted grade was an C+");
+                break;
+            case (finalgrade2 >= 73) && (finalgrade2 <= 77) :
+                alert(name+" your final grade was an C");
+                break;
+            case (finalgrade2 >= 70) && (finalgrade2 <= 73) :
+                alert(name+" your final weighted grade was an C-");
+                break;
+            case (finalgrade2 >= 67) && (finalgrade2 <= 70) :
+                alert(name+" your final weighted grade was a D+");
+                break;
+            case (finalgrade2 >= 63) && (finalgrade2 <= 67) :
+                alert(name+" your final weighted grade was a D");
+                break;
+            case (finalgrade2 >= 60) && (finalgrade2 <= 63) :
+                alert(name+" your final weighted grade was a D-");
+                break;
+            default :
+                alert(name+" your weighted grade failed and got an E");          
+        }
+
+
+    </script>
+</body>
+</html>

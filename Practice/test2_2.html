@@ -1,0 +1,124 @@
+<!--
+    Abe Burton
+    IS 303
+
+    Description: Get Student identifying information from an html form.
+    Then save it to local storage, and write dynamically to p tags from storage. Then clear out the storage.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Progress</title>
+    <link rel="stylesheet" type="text/css" href="loading-bar.css"/>
+    <script type="text/javascript" src="loading-bar.js"></script>
+</head>
+<body onload="clearData()">
+        <form>
+            <fieldset style="width:0px">
+                <legend>Student Info</legend>
+                <br><br>
+                <label for = "fname">What is your first name? </label>
+                <input type="text" id = "fname" autofocus>
+                <br><br>
+                <label for="lname">What is your last name? </label>
+                <input type="text" id="lname">
+                <br><br>
+                <label for="password">Enter your password: </label>
+                <input type="password" id="password">
+                <br><br>
+                <label for="date">Enter your date of birth: </label>
+                <input type="date" id="date" min="1950-01-01" max="2022-03-18">
+                <br><br>
+                <label for="gpa">Enter your GPA: </label>
+                <input type="number" id="gpa" step="0.01" placeholder="3.5" min="0.00" max="4.00">
+                <br><br>
+                <p>What is your gender?</p>
+                <input type="radio" id="male" name="gender" value="Male" checked="checked">
+                <label for="male">Male</label><br>
+                <input type="radio" id="female" name="gender" value="Female">
+                <label for="female">Female</label><br>
+                <input type="radio" id="other" name="gender" value="Other">
+                <label for="other">Other</label>
+            </fieldset>
+            <br><br>
+            <label for="email">Would you like to receive emails? (Y/N)</label>
+            <input type="text" id="email" value="Y">
+            <br><br>
+            <button onclick="saver()">Save</button>
+
+            <br><br>
+            <p id="1"></p><br>
+            <p id="2"></p><br>
+            <p id="3"></p><br>
+            <p id="4"></p><br>
+            <p id="5"></p><br>
+            <p id="6"></p><br>
+            <p id="7"></p>
+
+       </form>
+
+
+    <script>
+
+        //This function gets all the data from the form and saves it in local storage
+        //If the user didn't enter a first and last name then it prompts the user to enter more
+        //info before executing the save to local storage
+        function saver()
+        {
+            let firstname = document.getElementById("fname").value;
+            let lastname = document.getElementById("lname").value;
+            let password = document.getElementById("password").value;
+            let date = document.getElementById("date").value;
+            let gpa = document.getElementById("gpa").value;
+            let gender = document.querySelector('input[name="gender"]:checked').value;
+            let email= document.getElementById("email").value;
+
+            if((firstname && lastname))
+            {
+                localStorage.setItem("firstName", firstname);
+                localStorage.setItem("lastName", lastname);
+                localStorage.setItem("password", password);
+                localStorage.setItem("date", date);
+                localStorage.setItem("gpa", gpa);
+                localStorage.setItem("gender", gender);
+                localStorage.setItem("email", email);
+
+                writeData();
+            }
+            else
+            {
+                alert("Enter in the information needed on the form before saving.");
+                document.getElementById("fname").focus();
+            }
+
+        }
+
+        //This function clears the data on load
+        function clearData()
+        {
+            localStorage.clear();        
+
+        }
+
+        //This function takes the data in local storage and writes it to the p tags in the form
+        //Then after writing the p tags in clears the local storage
+        function writeData()
+        {
+            document.getElementById("1").innerHTML = "First Name= " + localStorage.getItem("firstName");
+            document.getElementById("2").innerHTML = "Last Name= " + localStorage.getItem("lastName");
+            document.getElementById("3").innerHTML = "Password= " + localStorage.getItem("password");
+            document.getElementById("4").innerHTML = "Date= " + localStorage.getItem("date");
+            document.getElementById("5").innerHTML = "GPA= " + localStorage.getItem("gpa");
+            document.getElementById("6").innerHTML = "Gender= " + localStorage.getItem("gender");
+            document.getElementById("7").innerHTML = "Email= " + localStorage.getItem("email");
+            localStorage.clear();
+        }
+        
+
+    </script>
+</body>
+</html>

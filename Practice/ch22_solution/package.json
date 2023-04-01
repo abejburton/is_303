@@ -1,0 +1,14 @@
+{
+  "name": "ch22_solution",
+  "version": "1.0.0",
+  "description": "chapter_route_solution",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Abe Burton",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.3"
+  }
+}

@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"path": "../Practice/ch22_solution"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "IS 303"
+	}
+}

@@ -1,0 +1,79 @@
+<!--
+    Abe Burton
+    HW2: BMI
+
+    Calculate user's BMI based on their input
+
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        //Collect User Data on Weight and Height
+        var weight = parseInt(prompt("What is your weight in pounds?\n(Enter a number)"));
+        var height_feet = parseInt(prompt("What is your height in feet?\n(Enter a number)"));
+        var height_inches = parseInt(prompt("What is your height in inches?\n(Enter a number)"));
+
+        //get height in total inches
+        var height = height_inches + (12*height_feet);
+
+        //Calculate BMI
+        var bmi = (weight/(height**2))*703;
+
+        //Decide BMI Classification and offer standard advice
+        if(bmi >= 30)
+        {
+            //Give their classification
+            alert("You are considered obese.");
+            //Then give health advice
+            alert("Here are some tips for better health:"
+            + "\nMaintain a healthy weight\nIncrease physical activity\nEat a heart-healthy diet"
+            + "\nKnow and control your heart health numbers");
+
+        }
+        else if(bmi >= 25)
+        {
+            //Give their classification
+            alert("You are considered overweight.");
+            //Then give health advice
+            alert("Here are some tips for better health:"
+            + "\nMaintain a healthy weight\nIncrease physical activity\nEat a heart-healthy diet"
+            + "\nKnow and control your heart health numbers");
+
+        }
+        else if(bmi >= 18.5)
+        {
+            //Give their classification
+            alert("You are considered normal weight.");
+            //Then give health advice
+            alert("Here are some tips for better health:"
+            + "\nMaintain a healthy weight\nIncrease physical activity\nEat a heart-healthy diet"
+            + "\nKnow and control your heart health numbers");
+
+        }
+        else
+        {
+            //Give their classification
+            alert("You are considered underweight.");
+            //Then give health advice
+            alert("Here are some tips for better health:"
+            + "\nMaintain a healthy weight\nIncrease physical activity\nEat a heart-healthy diet"
+            + "\nKnow and control your heart health numbers");
+
+        }
+
+
+
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!--
+    Abe Burton
+    IS303 Test 1 EC
+
+    Descending Bubble Sort with html color display
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <p id="first">test</p>
+    <p id="second">test</p>
+    <p id="third">test</p>
+    <p id="fourth">test</p>
+
+    <script>
+        //declare variables
+        var teams = ["BYU", "Gonzaga", "Portland", "Pepperdine"];
+        var wins = [23, 27, 9, 15];
+
+        //bubble sort in descending order
+        let hold_teams = [];
+        let hold_wins = [];
+        let output = "";
+
+        for (let outer = 0; outer < wins.length - 1; outer++) {
+
+            for (let inner = outer + 1; inner < wins.length; inner++) {
+
+                if (wins[outer] > wins[inner]) {
+
+                    hold_teams = teams[inner]; //hold the lesser value
+                    hold_wins = wins[inner];
+
+                    teams[inner] = teams[outer]; //move the greater value to the next index
+                    wins[inner] = wins[outer];
+
+                    teams[outer] = hold_teams; //put lesser value first
+                    wins[outer] = hold_wins;
+
+                }
+            }
+        }
+
+        //display html code differently based on the number of wins
+
+        let place = ["first","second","third", "fourth"];
+        
+        for (let counter = 0; counter < wins.length; counter++){
+
+
+            if (wins[counter]>20){
+
+                document.getElementById(place[counter]).innerHTML = teams[counter] + "-" + wins[counter];
+                document.getElementById(place[counter]).style.color = "blue";
+
+            }
+            else if (wins[counter]>14){
+
+                document.getElementById(place[counter]).innerHTML = teams[counter] + "-" + wins[counter];
+                document.getElementById(place[counter]).style.color = "green";
+
+            }
+            else {
+
+                document.getElementById(place[counter]).innerHTML = teams[counter] + "-" + wins[counter];
+                document.getElementById(place[counter]).style.color = "red";
+
+            }
+        }
+            
+
+
+
+    </script>
+
+</body>
+</html>

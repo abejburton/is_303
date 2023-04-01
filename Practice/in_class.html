@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <fieldset style="width: 300px;">
+            <legend>Login</legend>
+                <form>
+                    <label for="txtUserName">User name:</label>
+                    <input type="text" id="txtUserName">
+                    <br><br>
+                    <label for="txtPassword">Password:</label>
+                    <input type="password" id="txtPassword">
+                    <br><br>
+                    <button type="button" onclick="displayPassword();">Submit</button>
+                </form>
+        </fieldset>
+        <br><br>
+        <p id="myOutput"></p>
+        <script>
+            function displayPassword()
+            {
+                document.getElementById("myOutput").innerHTML = document.getElementById("txtPassword").value;
+            } 
+        </script>
+    </body>
+</html>     

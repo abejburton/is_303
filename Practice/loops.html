@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        /*
+        Write a program that prompts the user to enter in the number of teams and the number of games played per team. 
+        For each game played by each team, you will enter the team score and the opponent's score. 
+        You will then determine if the current team won the game and add that to the wins. 
+        Once that team's games have been entered, you will calculate the win/loss percentage by using the formula: wins/total number of games. 
+        Then display the team name that had the highest win/loss percentage along with their percentage. 
+        You can multiply the percentage by 100 to make it look more appealing.
+
+        */
+
+        var team_count;
+        var game_count;
+        var team_name;
+        var win_count;
+        var score1;
+        var score2;
+        var high_team;
+        var high_pct = 0;
+        var team_pct;
+        
+        team_count = parseInt(prompt("Enter the number of teams."));
+
+        for (var tcounter = 0;tcounter < team_count; tcounter++)
+        {
+            team_name = prompt("what is the team name?");
+            win_count = 0;
+            game_count = parseInt(prompt("how many games?"));
+
+            for (var gcounter = 0; gcounter < game_count; gcounter++)
+            {
+                score1 = parseInt(prompt("What was the score of" + team_name));
+                score2 = parseInt(prompt("What was the opponents score?"));
+
+                if (score1 > score2)
+                {
+                    win_count++;
+            
+                }
+            }
+
+            team_pct = win_count / game_count;
+
+            if (team_pct > high_pct)
+            {
+                high_team = team_name;
+                high_pct = team_pct;
+            }
+        }
+
+       alert("Best Team: " + high_team + "Win Percentage " + high_pct);
+
+
+
+    </script>
+</body>
+</html>

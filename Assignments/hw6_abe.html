@@ -1,0 +1,92 @@
+<!--Abe Burton-->
+<!--
+    Take a team name and number of games and simulate the season. Output the record and random scores for each game.
+    Games can't finish as a tie and overtimes should be output as well.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            function playGame()
+            {
+                //declaare variables that get user input from the keyboard and hold pieces of the eventual output
+                var numGames = parseInt(document.getElementById("games").value);
+                var myTeam = document.getElementById("teamName").value;
+                var output = "";
+                var ot = 0;
+                var wins = 0;
+                var losses = 0;
+                var scores = [];
+
+                //use a for loop to go through each game and generate scores while handling ties. Create output for each scenario.
+
+                for(let counter = 0; counter < numGames;counter++){
+
+                    let team_score;
+                    let opp_score;
+
+                    //home games on even numbers give a plus 5 advantage in scoring
+
+                    if(counter%2 ==0){
+                        team_score = Math.floor(Math.random() * 101) + 5;
+                        opp_score = Math.floor(Math.random() * 101);
+                    }
+                    else{
+                        team_score = Math.floor(Math.random() * 101);
+                        opp_score = Math.floor(Math.random() * 101);
+                    }
+
+
+                    //track score and output for wins or losses
+                    if(team_score > opp_score){
+                        wins +=1
+                        output += myTeam + " wins with a score of " + team_score + " - " + opp_score + "<br>";
+
+                    }
+                    else if(team_score < opp_score){
+                        losses +=1
+                        output += myTeam + " loses with a score of " + team_score + " - " + opp_score + "<br>";
+
+                    }
+                    
+                    //in case of a tie, add overtime stats and create different output that includes those stats
+                    //keep doing this until the tie is resolved via a while loop
+                    else{
+
+                        while(team_score==opp_score){
+                        team_score += Math.floor(Math.random() * 16);
+                        opp_score += Math.floor(Math.random() * 16);
+                        ot += 1;
+                        }
+
+                        if(team_score > opp_score){
+                            wins +=1
+                            output += myTeam + " wins with " + ot + " overtime(s) and a score of " + team_score + " - " + opp_score + "<br>";
+                        }
+                        else if(team_score < opp_score){
+                            losses +=1
+                            output += myTeam + " loses with " + ot + " overtime(s) and a score of " + team_score + " - " + opp_score + "<br>";
+                        }
+                    }
+                }
+
+                //create win percentage variable after running through the season and add to the output a summary of the season
+                let wpct = Number((wins / numGames) * 100).toFixed(1);
+                output += "<br><br>" + myTeam + "'s record is " + wins + " - " + losses + " with a winning percentage of " + wpct;
+
+                //Assign the contents of the variable output to the html tag outputGames
+                document.getElementById("outputGames").innerHTML = output;
+            }
+        </script>
+
+        <title>
+            Welcome to March Madness
+        </title>
+    </head>
+    <body>
+        Enter your team name: <input type="text" name="teamName" id="teamName"><br><br>
+        Number of games: <input type="text" name="games" id="games"><br><br>
+        <button type="button" onclick="playGame()">Start Season</button><br>
+        <p id="outputGames"></p>
+    </body>
+</html>

@@ -1,0 +1,124 @@
+<!--
+Abe Burton 
+IS 303
+
+Description: Roll a yahtzee with the number submitted by the user.
+Display images of the dice and the number of rolls it took to get each dice correct. Make it look professional.
+
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <br><br><br><br><br><br>
+
+    <!--Create a form that takes in user input on the dice number to be rolled-->
+    <form style="text-align: center; ">
+
+        <label for = "number" style="font-size:30px; color:cornflowerblue;">What number do you want for Yahtzee?</label>
+        <input type = "text" id = "number" style="border: 2px solid cornflowerblue;
+        border-radius: 4px;" autofocus>
+        <input type="button" value=" Click Me " id="theButton" onclick="roll_die()" style="font-size:20px; background-color: cornflowerblue; color: cornsilk;">
+
+    </form>
+    <br><br>
+
+    <!--Create image tags with unique ids that will be filled with the source image later-->
+
+    <div style="display: flex; justify-content: center;">
+        <img id = "0" src = "">
+        <img id = "1" src = "">
+        <img id = "2" src = "">
+        <img id = "3" src = "">
+        <img id = "4" src = "">
+    </div>
+
+    <!--Create p tags for holding the output and displaying the project nicely-->
+
+    <br><br>
+    <p id = "5" style="text-align: center; color:cornflowerblue;"></p>
+    <p id = "6" style="text-align: center; color:cornflowerblue;"></p>
+    <p id = "7" style="text-align: center; color:cornflowerblue;"></p>
+    <p id = "8" style="text-align: center; color:cornflowerblue;"></p>
+    <p id = "9" style="text-align: center; color:cornflowerblue;"></p>
+    <p id = "10" style="text-align: center; color:darkblue;"></p>
+
+    <br><br>
+    <p style="text-align: center; color:cornflowerblue; font-size:40px;">Abe Burton IS 303</p>
+
+    <script>   
+
+        //create a function that rolls the dice
+
+        function roller(number,counter){
+
+            //track the number of rolls to get the specified number using a while loop
+            let number_rolls = 0;
+            do{
+                var roll = Math.floor(Math.random() * 6) + 1;
+                number_rolls += 1;
+            }
+            while(roll!=number);
+
+            //display die image based on the number called
+            let img_id = String(counter);
+            let img_src = "images/dice" + number + "Use.jpeg";
+            document.getElementById(img_id).src=img_src;
+
+            //display output for the die showing how long it took
+            let output = "Dice " + (counter+1) + " rolls = " + number_rolls;
+            let p_id = String(counter + 5)
+            document.getElementById(p_id).innerHTML = output;
+
+            //return the number of rolls so that it can be aggregated in the next function
+            return number_rolls;
+
+        }
+
+        function roll_die(){
+
+            let total_rolls = 0;
+
+            //get the number to shoot for from the input
+            let number = document.getElementById("number").value;
+
+            //if the number is a valid dice number, roll the dice. If not, display an error
+            if((number >= 1) && (number <= 6)){
+
+
+                //loop through each die and roll until it gets to the right number while tracking each roll
+                for(let counter=0;counter<5;counter++){
+
+                    //call the roller function and track how many rolls it took for that die
+                    let ind_rolls = roller(number,counter);
+                    total_rolls += ind_rolls;
+
+                }
+
+                //display the total number of rolls
+                document.getElementById("10").innerHTML = "Total # of rolls = " + total_rolls;
+
+
+
+            }
+            else{
+                //show an error for an invalid die number
+                alert("Error, enter a number between 1 and 6");
+                document.getElementById("number").focus();
+            }
+
+        }
+
+
+
+    </script>
+</body>
+</html>

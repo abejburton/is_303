@@ -1,0 +1,83 @@
+<!--
+    Abe Burton
+    IS 303
+
+    Create a form that considers
+    a user's relationship responses
+    and creates a love progress bar.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Progress</title>
+    <link rel="stylesheet" type="text/css" href="loading-bar.css"/>
+    <script type="text/javascript" src="loading-bar.js"></script>
+</head>
+<body>
+    <fieldset>
+        <form>
+            <br><br>
+            <h1>Welcome to the BYU Information System's Dating Site</h1>
+            <br><br>
+            <label for = "phrase">What is the love phrase: </label>
+            <input type="text" id = "phrase">
+            <br><br>
+            <label for="first_names">Enter the first persons full name: </label>
+            <input type="text" id="first_names">
+            <br><br>
+            <label for="second_names">Enter the second person's full name: </label>
+            <input type="text" id="second_names">
+            <br><br>
+            <input type="checkbox" id="communicate">
+            <label for="communicate">We will communicate often</label>
+            <br><br>
+            <input type="checkbox" id="selfish">
+            <label for="selfish">We will not be selfish</label>
+            <br><br>
+            <input type="checkbox" id="serve">
+            <label for="serve">We will serve each other</label>
+            <br><br>
+            <input type="checkbox" id="friend">
+            <label for="friend">My spouse will be my best friend</label>
+            <br><br>
+            <input type="checkbox" id="god">
+            <label for="god">We will remember God</label>
+            <br><br>
+            <button>Click Me</button>
+            <button>Reset</button>
+
+       </form>
+       <div data-type="fill" data-path="M90.5,23.2c0-12 ... 23.2z" class="LoveHeart">
+           <p id="output"></p>
+       </div>
+    </fieldset>
+
+
+    <script>
+
+        function parser(first_name, second_name, phrase){
+            //parse each parameter, put them into a list of lists
+            return letter_list;
+        }
+
+        function searcher(){
+            let first_name = 
+            let second_name = 
+            let phrase = 
+            let data = parser(first_name,second_name,phrase);
+
+            for(let counter1=0;counter1<2;counter1++){
+                for(let letter=0;letter<data[counter1].length;letter++){
+                    if(data[counter1])//access the letters here
+                }
+            }
+        }
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var name = prompt("Enter Your First Name");
+        var avg = parseFloat(prompt("Enter Your Homework Average"));
+        var midterm1 = parseInt(prompt("Enter Your Midterm 1 Score"));
+        var midterm2 = parseInt(prompt("Enter Your Midterm 2 Score"));
+        var final = parseInt(prompt("Enter Your Final Score"));
+        var project1 = parseInt(prompt("Enter Your Project 1 Score"));
+        var project2 = parseInt(prompt("Enter Your Project 2 Score"));
+        var project3 = parseInt(prompt("Enter Your Project 3 Score"));
+
+        avg *= .1;
+        midterm1 *= .2;
+        midterm2 *= .2;
+        final *= .25;
+        project1 *= .05;
+        project2 *= .075;
+        project3 *= .125;
+
+        var final_grade = avg+midterm1+midterm2+final+project1+project2+project3;
+        name = name.toUpperCase();
+        alert(name+" your final grad was "+final_grade+"%.")
+    </script>
+</body>
+</html>

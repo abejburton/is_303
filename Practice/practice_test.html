@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <button type="button" onclick="goForTheGold()">Go</button>
+    <p id="olympicOutput"></p>
+
+    <script>
+
+
+        function goForTheGold(){
+
+
+            let athletes = parseInt(prompt("How many athletes?"));
+            let names = [];
+            let golds = [];
+            let silvers = [];
+            let bronzes = [];
+            let money = [];
+            let message = [];
+
+
+            if (athletes>0){
+
+                for (counter = 0; counter < athletes; counter++){
+
+                    let name = prompt("What is name of athlete " + (counter+1) + "?");
+                    let gold = parseInt(prompt("What is the number of gold medals for " + name + "?"));
+                    let silver = parseInt(prompt("What is the number of silver medals for " + name + "?"));
+                    let bronze = parseInt(prompt("What is the number of bronze medals for " + name + "?"));
+
+                    names.push(name);
+                    golds.push(gold);
+                    silvers.push(silver);
+                    bronzes.push(bronze);
+
+                    let athlete_value = (gold * 37500) + (silver * 22500) + (bronze * 1500);
+                    money.push(athlete_value);
+
+                    if (athlete_value >= 500000){
+                        message.push("Become a sports commentator");
+                    }
+                    else if (athlete_value >= 250000){
+                        message.push("You're rich and famous");
+                    }
+                    else{
+                        message.push("Great job, keep training!");
+                    }
+
+
+
+                }
+
+                for (let outer = 0; outer < money.length - 1; outer++) {
+                    for (let inner = outer + 1; inner < money.length; inner++) {
+                        if (money[outer] < money[inner]) {
+
+                            hold_names = names[inner];
+                            hold_message = message[inner]; //hold the greater value
+                            hold_money = money[inner];
+
+                            names[inner] = names[outer];
+                            message[inner] = message[outer]; //move the lesser value too the next index
+                            money[inner] = money[outer];
+                            
+                            names[outer] = hold_names;
+                            message[outer] = hold_message; //put greater value first
+                            money[outer] = hold_money;
+
+                        }
+                    }
+                }
+            
+
+                //print out results separated by a line break
+                let output = [];
+
+                for (counter = 0; counter < athletes; counter++){
+
+                    output = output + names[counter] + " " + money[counter] + " " + message[counter] + "<br>";
+
+                }
+
+                document.getElementById("olympicOutput").innerHTML = output;
+            }
+            else{
+                alert("Enter a non-zero number of athletes.");
+            }
+        }
+        
+
+    </script>
+    
+</body>
+</html>

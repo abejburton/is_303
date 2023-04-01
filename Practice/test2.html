@@ -1,0 +1,89 @@
+<!--
+    Author: Abe Burton
+
+    Description: Create a Soccer Team by inheriting from Team, Person, Player, and Coach objects. 
+    Allow for customization of all attribues and create methods where necessary for clear output.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        //Create a Person class with the attributes of first and last names (strings)
+        class Person
+        {
+            constructor(sFirst, sLast)
+            {
+                this.first_name = sFirst;
+                this.last_name = sLast;
+            }
+        }
+
+        //Create a SoccerCoach class which inherits from the Person class and has the attributes of career wins (int) and career losses (int) and win/loss pct (float)
+        class SoccerCoach extends Person
+        {
+            constructor(sFirst, sLast, iWins, iLosses, fPct)
+            {
+                super(sFirst, sLast);
+
+                this.wins = iWins;
+                this.losses = iLosses;
+                this.record = fPct;
+
+            }
+        }
+
+        //Create SoccerPlayer class which inherits from the Person class and has the attribute of goals_scored (int) and shots (int)
+
+        class SoccerPlayer extends Person
+        {
+            constructor(sFirst, sLast, iGoals, iShots)
+            {
+                super(sFirst, sLast);
+
+                this.goals = iGoals;
+                this.shots = iShots;
+            }
+        }
+
+        //Create a Team class. This class will have attributes to store the team name (string), wins (int), losses (int), coach name(first and last with both being strings). The coach is an object from the SoccerCoach class
+
+        class Team
+        {
+            constructor(sTeamName, iTeamWins, iTeamLosses, sCoachFirst, sCoachLast)
+            {
+                this.teamname = sTeamName;
+                this.teamwins = iTeamWins;
+                this.teamlosses = iTeamLosses;
+                this.coach = new SoccerCoach(sCoachFirst,sCoachLast,0,0,0);
+            }
+
+            team_info()
+            {
+                return(this.teamname + " have won " + this.teamwins + " games and lost " + this.teamlosses +
+                 " games and their coach is " + this.coach.first_name + " " + this.coach.last_name + ".");
+            }
+        }
+
+        class SoccerTeam extends Team
+        {
+            constructor(sTeamName, iTeamWins, iTeamLosses, sCoachFirst, sCoachLast, iTeamDraw, iTeamPoints)
+            {
+                super(sTeamName, iTeamWins, iTeamLosses, sCoachFirst, sCoachLast);
+
+                this.teamdraw = iTeamDraw;
+                this.points = iTeamPoints;
+                this.players = new Array(11).fill(new SoccerPlayer());
+            }
+        }
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "name": "startbootstrap-grayscale-gh-pages",
+  "version": "1.0.0",
+  "description": "Project3Website",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Sam Reyes",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.3",
+    "knex": "^1.0.5",
+    "pg": "^8.7.3"
+  }
+}
